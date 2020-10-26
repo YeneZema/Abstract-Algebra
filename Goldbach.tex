@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{cleveref}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{exercise}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{question}[2][Question]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+% --------------------------------------------------------------
+%                         Start here
+% --------------------------------------------------------------
+
+\title{Goldbach's proof of infinitude of primes}%replace X with the appropriate number
+
+\author{Miliyon T.\\ %replace with your name
+(\textit{written in a letter to Euler, July 1730})} %if necessary, replace with your course title
+
+\maketitle
+\begin{lemma}{1}\label{lem1}
+The Fermat numbers $F_n=2^{2^n}+1$ are pairwise relatively prime.
+\end{lemma}
+
+\begin{proof}
+It's easy to show by induction that
+\begin{align*}
+F_{m}-2=F_0 F_1 \cdots F_{m-1}
+\end{align*}
+This means that if $d$ divides both $F_n \& F_m$ (with $n<m$), then $d$ also divides $F_{m}-2$; so $d$ divides $2$. But every Fermat number is odd. So $d$ is $1$.
+\end{proof}
+\begin{theorem}{1}
+There are infinitely many primes
+\end{theorem}
+
+\begin{proof}
+Choose a prime divisor $p_n$ of each Fermat number $F_n$.
+By (\ref{lem1}) we know these primes are all distinct, showing that there are  infinitely many primes.
+
+\end{proof}
+
+% --------------------------------------------------------------
+%     You don't have to mess with anything below this line.
+% --------------------------------------------------------------
+
+\end{document}

@@ -1,0 +1,286 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage[hidelinks]{hyperref}
+
+
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+
+\begin{document}
+
+\nocite{AAU}
+
+\title{Galois Group of polynomials}
+
+\author{Miliyon T.}
+\date{}
+\maketitle
+
+\section{Introduction}
+
+All fields are assumed to be subfields of $\mathbb{C}$. If $F$ is a subfield of $K$ we call $K$ an extension of $F$ and we can regard it as a vector space over $F$ whose dimension, called the degree of the extension, is written $[K:F]$.
+
+\quad The \textbf{Galois group} of the extension, $G(K/F)$,is the group of all field automorphisms (1-1 maps from the field to itself which preserve sums and products)which fix the elements of $F$, with multiplication of maps as the operation. The fixed field of a subgroup of $G(K/F)$ is the set of all elements of $K$ which are fixed by every automorphism in the subgroup.
+If $\sigma_{1}$, ... $\sigma_{n}$ $\in$ C, \textbf{F[$\sigma_{1}$, ... $\sigma_{n}$]} denotes the smallest subfield which contains $F$ and the $a_i$. If $a_1, ... ,a_n$, are the zeros of $f(x) \in  F[x]$ this field is written as $\textbf{F[f(x) = 0]}$ and such an extension is called a $\textbf{polynomial extension}$.
+
+
+The minimum polynomial of $\sigma$ $\in$ $\mathbb{C}$ over $F$ is the monic polynomial $p(x) \in F[x]$ of smallest degree for which $p(\sigma) = 0$. It is a prime polynomial and its degree, $n$, is the dimension of $F[\sigma]$ over $F$. In fact $1, \sigma, \sigma^{2}, ... , \sigma^{n-1}$ is a basis.
+Numbers with the same minimum polynomial over $F$ are said to be \textbf{algebraic conjugates}, over $F$. Under an automorphism in $G(K/F)$ every element of $K$ must be mapped to one of its algebraic conjugates. The Galois group of an extension of a field by a polynomial of degree $n$ is isomorphic to a subgroup of $S_{n}$. The degree of the extension itself equals the order of the Galois group over $F$ and there is a 1-1 order-reversing correspondence between the subfields and the subgroups with the index of a subgroup being the degree, over $F$, of its fixed field and with normal subgroups corresponding to polynomial extensions.
+
+
+If $C\supset B\supset A$ are fields, $[C:A ]=[C:B][B:A]$. If $X$, $Y$ are bases for $C$ over $B$ and $B$ over $A$ then a basis for $C$ over $A$ is {$\beta$ $\gamma$ $|$ $\beta$ ,$\gamma$ $\in$ Y}. $B$ and $C$ are polynomial extensions of $A$, then $G(C/A)/G(C/B) \cong G(B/A)$.
+
+A \textbf{radical extension} is one of the form $F[x^{n} = a]$, for $a \in F$. Radical extensions have abelian Galois groups and so a field which can be reached from $F$ by a sequence of radical extensions has a soluble Galois group over $F$. A polynomial is solvable by radicals over $F$ if and only if its Galois group is solvable.
+
+\section{Field Extensions}
+
+\begin{defn}
+ Let $E$ be an extension field of $F$. An automorphism of $E$ is a ring isomorphism from $E$ onto $E$. An $F-automorphism$ of $E$ is an automorphism $\phi \quad of \quad E $ such that $\phi{x} = x \forall{x} \in F$.
+\end{defn}
+
+\begin{defn}
+The automorphism group $Aut(E : F)$ of $E : F$ fixing $F$ is the set of all all $F-automorphisms$ of $E$.
+\end{defn}
+
+
+\begin{thm}
+The automorphism group $Aut(E : F)$ is a group under composition.
+  \end{thm}
+\begin{proof}
+First, note that the composition operation $\circ$ is always associative. Let $\phi,\psi \in  G(E:F)$.Then $(\phi o\psi )(a) = \phi( \psi(a)) = \phi(a) = a, \forall {a} \in F$, and hence $\phi o\psi \in$ Aut(E : F). Moreover, for any $a \in F, \phi^{-1}(a) = b$, where $\phi(b) = a$. But $\phi$ is an F-automorphism, so $\phi(b) = b \Rightarrow b = a.$ Hence,$ \phi^{-1}(a)(a) = a, \forall a  \in F \Rightarrow \phi^{-1} \in Aut(E : F)$. As such, $(\phi o \phi^{-1} = id \in Aut(E : F)$, and therefore Aut(E:F) is a group.
+\end{proof}
+
+
+\begin{exmp}
+Consider $G(\mathbb{C}:\mathbb{R})$: Suppose $\alpha$ is an $R-automorphism$ of $\mathbb{C}$, and let $j = \alpha(i)$, where $i^{2}$=-1. Then we have that $j^{2}=\alpha(-1) = -1 \Rightarrow j = \pm i$,
+Therefore, $\alpha(x+iy)=\alpha(x)+\alpha(i) \alpha(y)= x + jy = x  \pm iy$. Hence, we have two possible $\mathbb{R}-automorphisms of \mathbb{C}$ :
+   \begin{center}
+   $\alpha_{1}(x+iy)$=x+iy
+   \end{center}
+      and
+     \begin{center}
+    $\alpha_{2}(x+iy)$=x-iy
+    \end{center}
+    The identity is obviously an R-automorphism.
+\end{exmp}
+
+
+To check the latter,
+\begin{align*}
+   \alpha_{2}((x+iy)+(u+iv))&=\alpha_{2}((x+u)+i(y+v))\\
+                               &=(x+u)-i(y+v)\\
+                               &=x-iy + u-iv\\
+                               &=\alpha_{2}(x+iy)+\alpha_{2}(u+iv)
+\end{align*}
+\begin{align*}
+\alpha_{2}((x+iy)(u+iv))&=\alpha_{2}((xu-yv+i(xv+yu))\\
+                               &=xu-yv-i(xv+yu)\\
+                               &=(x-iy)(u-iv)\\
+                               &=\alpha_{2}(x+iy)\alpha_{2}(u+iv)
+ \end{align*}
+Hence, $\alpha_{2}$ is an R-automorphism. Clearly, $\alpha_{2}$$^{2}$
+ = id, and we can see that G(C : R) = {id,$\alpha_{2}$} $\alpha_{2}$g is a cyclic group of order 2.
+
+\begin{exmp}
+Consider the prototypical example of $\mathbb{Q}[\sqrt{2}]$ as an extension of $\mathbb{Q}$. We already know that
+$\mathbb{Q}[\sqrt{2}] = {a + b\sqrt{2}, a,\in \mathbb{Q}}$.
+Therefore, if $\phi $ is a $\mathbb{Q}$-automorphism, then for all $\alpha$ ${\in}$ $\mathbb{Q}[\sqrt{2}]$, $\phi$ $\alpha = \phi a + \phi (b)\phi \sqrt{2} = a + b\phi \sqrt{2}$.
+
+Therefore, $\quad \phi  : \mathbb{Q}[\sqrt{2}] \rightarrow \mathbb{Q}[\sqrt{2}]$ is completely determined by the value of $\quad \phi \sqrt {2}$. Now, because
+\begin{align*}
+          2=\phi(2)&=\phi(\sqrt{2})\\
+                   &=\phi \sqrt{2} \phi \sqrt{2}\\
+                   &=(\phi \sqrt{2})^{2}
+\end{align*}
+$\Rightarrow \phi \sqrt{2}=\pm \sqrt {2}$
+ \end{exmp}
+
+we see that, as before, there are two possible automorphisms and hence  $| G(Q[ \sqrt {2}]:Q | =2$.
+
+\begin{defn}
+Let $H$ be a finite subgroup of the group of automorphisms of a field $E$: The fixed field of $H$ $E_{H}$ is given by $E_{H}$ =\{x$\in$ E$/$ $ \phi$(x)=x,$\forall$ $\phi$ $\in$H\ \}.
+\end{defn}
+
+Notice the importance of the previous definition, We have just associated a field $E_{H}$ with the group of automorphisms of a field extension E : F. We can now make the following proposition:
+
+\begin{prop}
+The association of groups to fields and fields to group defined above is inclusion reversing.
+That is,
+\begin{enumerate}
+\item if E is an extension of $F_{1}$ and $F_{2}$, with $F_{1}$ $\subseteq$ $F_{2}$ $\subseteq$ E; then Aut(E : $F_{1}$)$\supseteq$(E : $F_{2}$), and
+ \item if $H_{1}$ $\subseteq$ $H_{2}$ $\subseteq$ Aut(E); then $E_{H_{1}}$ $\supseteq$ $E_{H_{2}}$.
+\end{enumerate}
+\end{prop}
+
+\begin{exmp}
+Consider our previous example of $\mathbb{Q}[\sqrt{2}]$ as an extension of $\mathbb{Q}$: We showed that $|Aut(\mathbb{Q}[\sqrt{2}]):\mathbb{Q}|=2 \Rightarrow$ $Aut(\mathbb{Q}[\sqrt{2}]):\mathbb{Q}={1,\sigma}=A$.  The identity fixes everything, so the fixed field $\mathbb{Q}[\sqrt{2}]_{A}$ is the set of elements in $\mathbb{Q}[\sqrt{2}] $ that are fixed by $\sigma$. That is, $\mathbb{Q}[\sqrt{2}]_{A} =\{x\in A|  \sigma x = x\}$. But,\\
+      $\sigma (a+b \sqrt {2})=a+b \sqrt {2}$\\
+      $\Rightarrow  a-b \sqrt {2}=a+b \sqrt {2}$\\
+      $\Rightarrow b=0$.\\
+Therefore,$\mathbb{Q}[\sqrt{2}]_{A}=\mathbb{Q}$ is the the only fixed field of $Aut(\mathbb{Q}[\sqrt{2}]$.
+\end{exmp}
+The Galois group of a polynomial extension can be computed readily if the zeros of the polynomial are known and can sometimes be obtained indirectly when they are not.
+
+\begin{exmp}
+\quad \textbf{f(x) = $x^{4}$ - $x^{2}$ - 2}
+     \begin{enumerate}
+    \item Factors:\quad $x^{4}$ - $x^{2}$ - 2 = ($x^{2}$ - 2)($x^{2}$ + 1).\\
+     \item Zeros: $\pm \sqrt2, \pm i$\\
+     \item Splitting field = F = $\mathbb{Q}[\sqrt 2, -\sqrt 2, i, -i] = \mathbb{Q}[\sqrt2, i] = \mathbb{Q}[i][\sqrt2].$\\
+     \item $|F:\mathbb{Q}| = 4 [= |F:\mathbb{Q}[\sqrt2]|\times |\mathbb{Q}[\sqrt2]:\mathbb{Q}| = 2 \times2]$
+     \item The Galois group has order 4.\\
+     \item Possible automorphisms: i$\rightarrow$ $\pm$i and $\sqrt2\rightarrow \pm \sqrt 2$, giving four combinations.\\
+    \item All 4 combinations arise. [since $|F : \mathbb{Q}| = 4]$
+      \end{enumerate}
+\end{exmp}
+
+\begin{itemize}
+  \item [8.]In this group every subgroup is normal, so every subfield must be a polynomial extension. Indeed they are since:
+  \begin{itemize}
+     \item[*] $K = \mathbb{Q}[x^{4} - x^{2} - 2 =0]$;
+     \item[*] $\mathbb{Q}[i] = \mathbb{Q}[x^{2} + 1 = 0]$;
+     \item[*] $Q[\sqrt2] = \mathbb{Q}[x^{2} - 2 = 0]$;
+     \item[*] $\mathbb{Q}[\sqrt2] = \mathbb{Q}[x^{2} + 2 = 0]$.
+  \end{itemize}
+  \item [9.] The subfields are: $K,\mathbb{Q}[i], \mathbb{Q}[\sqrt2],\mathbb{Q}[\sqrt2],\mathbb{Q}$
+\end{itemize}
+
+\section{Galois Theory}
+
+\begin{defn}[Automorphism]
+ A bijective mapping of the elements of a set onto itself. So, the domain and range of the function are the same.
+\end{defn}
+
+Let $E$ be an extension field of the field $F$. An automorphism of $E$ is a ring isomorphism from $E$ onto $E$. The Galois group of $E$ over $F$, $Gal(E/F)$ is the set of all automorphisms of $E$ that take every element of $F$ to itself.
+
+\begin{defn}
+If $H$ is a subgroup of $Gal(E/F)$ is the set $E_{H}=\{x\in E/\phi(x)=x\forall \phi \in H\}$ is called the fixed field of H.
+\end{defn}
+
+The set of automorphisms of $E$ forms a group under composition. The automorphism group of $E$ fixing $F$ is a subgroup of the automorphism group of $E$ and for any subgroup $H$ of $Gal(E/F)$,the fixed field $E_{H}$ of H is a subfield of $E$. The group $Gal(E/F)$ is called Galois group of $E$ over $F$.
+
+\begin{thm}(\textbf{Fundamental Theorem of Galois Theory})
+\\ Let E : F be a Galois extension. Then there exists a
+bijection between subfields Mi of E containing F and subgroups $H_{i}$ of G(E : F) given by $\phi$ : $M_{i}$ $\rightarrow$ G(E : $M_{i}$)
+and $\varphi$ : $H_{i}$ $\rightarrow$ $E_{H}$; which are mutual inverses. Moreover,
+\begin{itemize}
+ \item[1] If $M_{i}$;$M_{j}$ correspond to $H_{i}$;$H_{j}$ ; respectively, then $M_{i}$ $\subseteq$ $M_{j}$ if and only if $H_{i}$ $\supseteq$ $H_{j}$,$\forall$  i $\neq$ j.\\
+  \item[2]  [E : $M_{i}$] = $|$ $H_{i}$ $|$ and [$M_{i}$ : F] = $|$G(E:F) : $H_{i}$ $|$, $\forall$ i.
+\end{itemize}
+\end{thm}
+
+\begin{itemize}
+   \item[3] E : $M_{i}$ is always Galois, with G(E : $M_{i}$) = $H_{i}$; $\forall$i.
+   \item[4] $M_{i}$ : F is Galois if and only if  $H_{i}$ is a normal subgroup of G(E : F): If this is the case, then
+G( $M_{i}$ : F)$\cong$ G(E : F)$/$ $H_{i}$.
+\item[5] The lattice of subfields of E containing F and the lattice of subgroups of G(E : F) are dual.
+\end{itemize}
+
+\begin{exmp}
+Consider the polynomial $f(x) = x^{4}-2$ over $\mathbb{Q}$, Then a splitting field for $f$ is $\mathbb{Q}[\sqrt[4]{2},i]$; where $f(x) = (x + \xi)(x - \xi)(x + \xi i)(x - \xi i)$, and $\xi = \sqrt[4]{2}$. We can immediately conclude that $\mathbb{Q}[\sqrt[4]{2}, i]$ is normal and separable. To compute the degree
+of $\mathbb{Q}[\sqrt[4]{2}, i]$ over $\mathbb{Q}$, simply consider the form of any element: For any $\gamma \in \mathbb{Q}[\sqrt[4]{2}, i]$, $\gamma$=$a_{1}$ + $a_{2}$ $\xi$ +$a_{3}$ $\xi^{2}$ + $a_{4}$ $\xi^{3}$ + $a_{5}$i + $a_{6}$ $\xi$i + $a_{7}\xi^{2}$i + $a_{8}\xi^{3}$i.
+Therefore, we know that $[\mathbb{Q}[\sqrt[4]{2}, i]:\mathbb{Q}] = 8$ Therefore, $\mathbb{Q}[\sqrt[4]{2}, i]:\mathbb{Q}$ is a Galois extension.
+\end{exmp}
+
+
+\section{Solvability of Polynomials by Radicals}
+
+ Galois' entire purpose for investigating this structure in the first place was to find solutions of polynomials
+by radicals. To see how this is achieved, we need the following definitions.
+\begin{defn}
+A polynomial, f (x) $\in$ K[x], is said to be solvable by radicals if its
+splitting field is contained in a radical extension of K.
+\end{defn}
+
+
+\begin{defn}
+A group G is solvable if it has a finite sequence of subgroups {id} = $H_{0}$ $\subset$ $H_{1}$ $\subset$ $H_{2}$ $\subset$ ... $\subset$
+$H_{k}$ = G;where for each 0 $\leq$ i $\leq$ k; $H_{i}$ is normal in $H_{i+1}$ and $H_{i+1}$ $/$ $H_{i}$ is Abelian. 
+\end{defn}
+The use of the Galois group in understanding polynomials is that a given polynomial is solvable by
+radicals if and only if its corresponding Galois group is solvable.
+
+
+This allows us to easily answer the question
+of the solvability of the quintic (and higher) polynomial equation. It is a theorem that for all n $\geq$ 5; the
+Galois group of the general polynomial of degree n is isomorphic to $S_[n]$; and, therefore, not solvable. This is
+not to say that there may exist radical solutions to some n degree polynomials whose coefficients are related
+in some special way. It is very important to realize that,
+although Galois theory is a powerful tool inasmuch as it can tell us whether or not a given polynomial is
+solvable by radicals, it does not say anything about how to solve a polynomial by radicals.Given the specific polynomial $x^{2}+3x+4$ over the field of rational numbers Q, from the quadratic formula for its roots we know that its roots are $( -3 \pm \sqrt{-7} )/$2 thus the field Q($\sqrt{-7}$)i is the splitting field of $x^{2}+3x+4$ over Q . Consequently there is an element y = $\sqrt{-7}$ in Q
+such that the extension field Q($\omega$) where $\omega^{2}$ = y is such that it contains all the roots of
+$x^{2}+3x+4$.
+
+
+From a slightly different point of view, given the general quadratic polynomial
+p(x) = $x^{2}-3x+4$ over F, we can consider it as a particular polynomial over the field F($a_{1},a_{2}$ )of rational functions in the two variables $a_{1}$,$a_{2}$ over F ; in the extension obtained by adjoining $\omega$
+to F($a_{1},a_{2}$ ).Here  $\omega^{2}$=$a_{1}^{2}$-4$a_{2}$ $\in$F($a_{1}$,$a_{2}$), We find all roots of p($x$).There is a formula which expresses the roots of p(x) in terms of $a_{1}$,$a_{2}$ square roots of rational
+functions of these.\\For cubic equation p(x) = $x^{3}$-$a_{1}x^{2}$+$a_{2}$x+$a_{3}$ a an explicit formula can be given, involving combinations of square roots and cube roots of rational functions in $a_{1},a_{2},a_{3}$ .
+
+They are explicitly given by Cardan's formulas: Let $p = a_{2}-((a_{1}^{2})/3)$ and $q=\frac{2a_{1}^{3}}{27}-\frac{a_{1}a_{2}}{3}+a_{3}$ .\\
+   \begin{center}
+    $p=\sqrt[3]{\frac{-q}{2}+\sqrt{\frac{p^{3}}{27}+\frac{q^{2}}{4}}}$
+   \end{center}
+    and let
+    \begin{center}
+    $q=\sqrt[3]{\frac{-q}{2}+\sqrt{\frac{p^{3}}{27}+}}-\frac{q^{2}}{4}$
+    \end{center}
+Then the roots are P+Q$-$($a_{1}/3$),$\omega$P+$\omega^{2}$Q-$a_{1}/3$
+and $\omega^{2}$p+$\omega$Q - $a_{1}/3$, where $\omega\neq$1 $\omega$ is a cube root of 1.
+
+The above formulas only serve to illustrate for us that by adjoining a certain square root and then a cube root to F($a_{1},a_{2},a_{3}$),we reach a field in which p(x) has its roots.\\For fourth-degree polynomials, which we shall not give explicitly, by using rational operations and square roots, we can reduce the problem to that of solving a certain cubic, so here too a formula can be given expressing the roots in terms of combinations of radicals of rational
+functions of the coefficients.\\For polynomials of degree five and higher, no such universal radical formula can be given, for we shall prove that it is impossible to express their roots, in general, in this way.
+
+\begin{exmp}
+$f(x) = x^{3} - 2$
+\begin{enumerate}
+  \item  Zeros: $2^{1/3}, 2^{1/3}\omega, 2^{1/3}\omega^{2}$.
+  \item  Splitting field = F = $Q[2^{1/3}, 2^{1/3}\omega, 2^{1/3}\omega^{2}] = Q[2^{1/3}, \omega]$.
+  \item The minimum polynomial of $2^{1/3}$ is $x^{3} - 2$. Thus $|Q[2^{1/3}]:Q| = 3$ .
+  \item The minimum polynomial for w over Q is $x^{2} + x +1$ and over $Q[2^{1/3}]$ it is the same.
+  \item $|F:Q| = 6 [= |F:Q[2^{1/3}]| |Q[2^{1/3}]:Q| =2\times3]$
+  \item The Galois group has order 6.
+  \item Possible automorphisms:
+  \begin{align*}
+   2^{1/3}\rightarrow & 2^{1/3}, 2^{1/3}\omega, 2^{1/3}\omega^{2} and\\
+   w\rightarrow&\omega or \omega^{2},
+  \end{align*}
+  giving six combinations.
+  \item All 6 combinations arise. [since $|F:Q| = 6$]
+\end{enumerate}
+\end{exmp}
+\end{document}

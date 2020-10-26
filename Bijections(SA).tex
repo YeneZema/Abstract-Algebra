@@ -1,0 +1,90 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}  % set the margins to 1in on all sides
+\usepackage{graphicx}              % to include figures
+\usepackage{amsmath}               % great math stuff
+\usepackage{amsfonts}              % for blackboard bold, etc
+\usepackage{amsthm}                % better theorem environments
+\usepackage{amsthm,amssymb}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{exmps}[thm]{Examples}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+\usepackage{cleveref}	
+\begin{document}
+
+
+\nocite{}
+
+\title{Bijections with composition $(S_A)$}
+
+\author{Miliyon T.}
+\date{October 7, 2014}
+\maketitle
+
+
+%\section{$D_4$}
+
+Let $A$ be a non empty set and $S_A$ denotes \textit{the set of all bijections of $A$ onto itself} i.e.
+\[
+S_A=\{f:A \to A\mbox{ and } f \mbox{ is 1-1 \& onto}\}
+\]
+Claim $S_A$ with composition, $(S_A,\circ)$, is a group.
+\begin{proof}
+First of all $S_A\neq \emptyset$ because $\mbox{Id}(x)=x$ for all $x\in A$. Thus, $\mbox{Id}\in S_A$.
+\begin{enumerate}
+  \item \textbf{Closed}: Let $f,g\in S_A$. Then $f:A \to A$ and $g:A \to A$.
+  \[
+  f\circ g:A \to A \mbox{ is 1-1 correspondence}
+  \]
+  Thus, $f\circ g\in S_A$. Hence $S_A$ is closed under $\circ$.
+  \item \textbf{Associative}: Let $f,g,h\in S_A$
+  \[
+  (f\circ g)\circ h=f\circ(g\circ h)\tag{Composition of function is associative}
+  \] 
+  \item \textbf{Identity}: Let $f\in S_A$. Then $f:A \to A$ is 1-1 and onto. Define 
+  \[
+  \mbox{Id}:A \to A\quad\mbox{ by } \mbox{Id}(x)=x
+  \] 
+  then
+  \[
+  f\circ\mbox{Id}:A \to A
+  \]
+  Let $x\in A$,
+  \begin{align*}
+  (f\circ\mbox{Id})(x) & =f(\mbox{Id}(x))=f(x)\Rightarrow f\circ\mbox{Id}=f\\
+  (\mbox{Id}\circ f)(x) &=\mbox{Id}(f(x))=f(x)\Rightarrow \mbox{Id}\circ f=f
+  \end{align*}
+  Hence $f\circ\mbox{Id}=f=\mbox{Id}\circ f$. Thus, the identity element of $S_A$ is $\mbox{Id}:A\to A$ defined by $\mbox{Id}(x)=x$ for all $x$ in $A$.
+  \item \textbf{Inverse}: Let $f\in S_A$. Then $f:A \to A$ is 1-1 and onto. Then $f^{-1}:A \to A$ is 1-1 and onto. This implies $f^{-1}\in S_A$.  
+\end{enumerate}
+Therefore $(S_A,\circ)$ is a group.
+\end{proof}
+
+\begin{rem}
+If $A=\{1,2,3,\ldots,n\}$, then instead of $S_A$ we write $S_n$.
+\end{rem}
+
+\end{document}

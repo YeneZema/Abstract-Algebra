@@ -1,0 +1,309 @@
+\documentclass[	DIV=calc,paper=a4,fontsize=11pt]{scrartcl}	 					% KOMA-article class
+\usepackage{lipsum}		
+\usepackage[margin=1in]{geometry}											% Package to create dummy text
+\usepackage[english]{babel}										% English language/hyphenation
+\usepackage[protrusion=true,expansion=true]{microtype}				% Better typography
+\usepackage{amsmath,amsfonts,amsthm,amssymb}					% Math packages
+\usepackage[pdftex]{graphicx}									% Enable pdflatex
+\usepackage[svgnames]{xcolor}									% Enabling colors by their 'svgnames'
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption}	% Custom captions under/above floats
+\usepackage{epstopdf}												% Converts .eps to .pdf
+\usepackage{subfig}													% Subfigures
+\usepackage{booktabs}												% Nicer tables
+\usepackage{fix-cm}		
+\usepackage{cleveref}
+% various theorems, numbered by section
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{defns}[thm]{Definitions}
+\newtheorem{con}[thm]{Construction}
+\newtheorem{exmp}[thm]{Example}
+\newtheorem{notn}[thm]{Notation}
+\newtheorem{notns}[thm]{Notations}
+\newtheorem{addm}[thm]{Addendum}
+\newtheorem{exer}[thm]{Exercise}
+\newtheorem{rem}[thm]{Remark}
+\theoremstyle{plain}
+
+
+\theoremstyle{remark}
+\newtheorem{rems}[thm]{Remarks}
+\newtheorem{warn}[thm]{Warning}
+\newtheorem{sch}[thm]{Scholium}
+\DeclareMathOperator{\id}{id}
+
+\newcommand{\bd}[1]{\mathbf{#1}}  % for bolding symbols
+\newcommand{\RR}{\mathbb{R}}      % for Real numbers
+\newcommand{\ZZ}{\mathbb{Z}}      % for Integers
+\newcommand{\col}[1]{\left[\begin{matrix} #1 \end{matrix} \right]}
+\newcommand{\comb}[2]{\binom{#1^2 + #2^2}{#1+#2}}
+%%% Custom sectioning (sectsty package)
+\usepackage{sectsty}													% Custom sectioning (see below)
+\allsectionsfont{%															% Change font of al section commands
+	\usefont{OT1}{phv}{b}{n}%										% bch-b-n: CharterBT-Bold font
+	}
+
+\sectionfont{%																% Change font of \section command
+	\usefont{OT1}{phv}{b}{n}%										% bch-b-n: CharterBT-Bold font
+	}
+
+
+
+%%% Headers and footers
+\usepackage{fancyhdr}												% Needed to define custom headers/footers
+	\pagestyle{fancy}														% Enabling the custom headers/footers
+\usepackage{lastpage}	
+
+% Header (empty)
+\lhead{}
+\chead{}
+\rhead{}
+% Footer (you may change this to your own needs)
+\lfoot{\footnotesize \texttt{www.albohessab.weebly.com} \textbullet ~Miliyon T.}
+\cfoot{}
+\rfoot{\footnotesize page \thepage\ of \pageref{LastPage}}	% "Page 1 of 2"
+\renewcommand{\headrulewidth}{0.0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+
+%%% Creating an initial of the very first character of the content
+\usepackage{lettrine}
+\newcommand{\initial}[1]{%
+     \lettrine[lines=3,lhang=0.3,nindent=0em]{
+     				\color{DarkGoldenrod}
+     				{\textsf{#1}}}{}}
+
+
+
+%%% Title, author and date metadata
+\usepackage{titling}															% For custom titles
+
+\newcommand{\HorRule}{\color{DarkGoldenrod}%			% Creating a horizontal rule
+									  	\rule{\linewidth}{1pt}%
+										}
+
+\pretitle{\vspace{-30pt} \begin{flushleft} \HorRule
+				\fontsize{25}{25} \usefont{OT1}{phv}{b}{n} \color{DarkRed} \selectfont
+				}
+\title{Primary Decomposition of Ideals}					% Title of your article goes here
+\posttitle{\par\end{flushleft}\vskip 0.5em}
+
+\preauthor{\begin{flushleft}
+					\large \lineskip 0.5em \usefont{OT1}{phv}{b}{sl} \color{DarkRed}}
+\author{Miliyon T., }											% Author name goes here
+\postauthor{\footnotesize \usefont{OT1}{phv}{m}{sl} \color{Black}
+					Adama Science and Technology University 							% Institution of author
+					\par\end{flushleft}\HorRule}
+
+\date{\today}																				% No date
+
+
+
+%%% Begin document
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy} 			% Enabling the custom headers/footers for the first page
+% The first character should be within \initial{}
+\initial{T}\textbf{he decomposition of an ideal into primary ideals is a traditional pillar of ideal theory. From another perspective primary decomposition provides a generalization of the factorization of an integer as a product of prime-powers [Atiyah]. In these presentation we have compiled some of the basic definitions and results for the theory of primary decomposition of ideals.}
+
+\section{Definitions}
+\begin{defn}[Ideal]
+An ideal $\mathfrak{a}$ of a ring $R$ is a subset of $R$ which is an additive subgroup and is such that $R\mathfrak{a} \subset \mathfrak{a}$ (i.e., $x\in R$ and $y\in \mathfrak{a}$ imply $xy\in \mathfrak{a}$).
+\end{defn}
+\begin{defn}[Ideal quotient]
+If $\mathfrak{a}, \mathfrak{b}$ are ideals in a ring $R$, their Ideal quotient is
+\[(\mathfrak{a}:\mathfrak{b}) = \{x\in R:x\mathfrak{b}\subset \mathfrak{a}\}\]
+which is an ideal. If $\mathfrak{b}$ is a principal ideal $(x)$, we shall write $(\mathfrak{a} : x)$ in place of $(\mathfrak{a}:(x))$.
+\end{defn}
+
+\begin{defn}[Radical]
+If $\mathfrak{a}$ is any ideal of $R$, the radical of $\mathfrak{a}$ is
+\[r(\mathfrak{a}) = \{x\in R :x^n\in \mathfrak{a} \text{ for some } n>0\}.\]
+\end{defn}
+
+\begin{defn}[Nilradical]
+The set $\mathfrak{R}$ of all nilpotent\footnote{An element $a$ in a ring $R$ is said to be nilpotent if $a^n=0$ for some $n\ge1$.} elements in a ring $R$ is called nilradical of $R$.
+\end{defn}
+
+\begin{defn}[Prime Ideal]
+An ideal $\mathfrak{p}$ in $R$ is prime if $\mathfrak{p}\neq (1)$ and if $xy\in \mathfrak{p} \Rightarrow x\in \mathfrak{p}$ or $y\in \mathfrak{p}$.
+\end{defn}
+
+\begin{defn}[Primary Ideal]
+An ideal $\mathfrak{q}$ in a ring $R$ is primary if $\mathfrak{q}\neq R$ and if $xy\in \mathfrak{q}\Rightarrow$ either $x\in \mathfrak{q}$ or $y^n\in \mathfrak{q}$ for some $n>0$.
+\end{defn}
+Equivalently, an ideal $\mathfrak{q}$ is primary if $R/ \mathfrak{q}\neq 0$ and every zero-divisor\footnote{A zero-divisor is a nonzero element $a$ of a ring $R$ such that there is a nonzero element $b\in R$ with $ab=0$.} in $R/ \mathfrak{q}$ is nilpotent.
+
+\begin{rem}
+Trivially every prime ideal is primary.
+\end{rem}
+
+\begin{defn}[Noetherian Ring]
+A ring $R$ is said to be Noetherian if every ideal $I$ of $R$ is finitely generated.
+\end{defn}
+\subsection{Examples}
+
+\begin{exmp}
+The primary ideals in $\Bbb Z$ are $(0)$ and $(p^n)$, where $p$ is prime.\\
+If $xy\in \langle p^n\rangle$ then some power of $p$ divides $x$ or $y$. Let $p|x$, then $x^n\in \langle p^n\rangle$.
+\end{exmp}
+
+\begin{exmp}
+Let $A = k[x,y]$, $\mathfrak{q}=\langle x,y^2 \rangle$. Then
+\[A/\mathfrak{q}=\frac{k[x,y]}{\langle x,y^2 \rangle}=\frac{k[y]}{\langle y^2 \rangle}\]
+in which the zero divisors are all the multiples of $y$, hence are nilpotent. Hence $\mathfrak{q}$ is primary, and it radical $r(\mathfrak{q})=\langle x,y \rangle=\mathfrak{p}$. Note that $\mathfrak{p}$ is prime since $A/\mathfrak{p}=k$ is a field and $\mathfrak{p}^2=\langle x^2,xy,y^2 \rangle$. We have the strict inclusions $\mathfrak{p}^2\subsetneq \mathfrak{q}\subsetneq \mathfrak{p}$. Thus, a primary ideal is not necessarily a prime power.
+\end{exmp}
+\begin{exmp}
+Conversely, a prime power $\mathfrak{p}^n$ is not necessarily primary, although its
+radical is the prime ideal $\mathfrak{p}$. For example, let $A = k[x, y, z]/\langle xy-z^2\rangle$ and let
+$\overline{x}, \overline{y}, \overline{z}$ denote the images of $x, y, z$ respectively in $A$. Then $\mathfrak{p}= \langle \overline{x}, \overline{z}\rangle$ is prime (since $A/\mathfrak{p}=k[y]$, an integral domain); we have $\overline{x}\overline{y} = \overline{z}^2\in \mathfrak{p}^2$ but $\overline{x}\notin \mathfrak{p}^2$ and
+$\overline{y}\notin r(\mathfrak{p}^2) =\mathfrak{p}$; hence $\mathfrak{p}^2$ is not primary.
+\end{exmp}
+\subsection{Basic results}
+
+An alternative definition of $\mathfrak{R}$ is given by the following lemma.
+\begin{lem}\label{nil}
+The nilradical of $R$ is the intersection of all the prime ideals of $R$.
+\end{lem}
+
+\begin{prop}
+The radical of an ideal $\mathfrak{a}$ is the intersection of the prime ideals which contain $\mathfrak{a}$.
+\end{prop}
+\begin{proof}
+Lemma (\ref{nil}) applied to $R/\mathfrak{a}$ tells us that the nilradical of $R/\mathfrak{a}$ is the intersection of all prime ideals of $R/\mathfrak{a}$ which is in correspondence with the set of all prime ideals containing $\mathfrak{a}$.
+\end{proof}
+\begin{lem}
+If $\mathfrak{q}$ is primary, then $r(\mathfrak{q})$ is a prime ideal.
+\end{lem}
+\begin{proof}
+Let $r=st\in r(\mathfrak{q})$. If $s\notin r(\mathfrak{q})$ we must show that $t\in r(\mathfrak{q})$. If $s\notin r(\mathfrak{q})$, then no power of $s$ belongs to $\mathfrak{q}$. Then $t\in \mathfrak{q}\subset r(\mathfrak{q})$ since $\mathfrak{q}$ is primary.
+\end{proof}
+If $\mathfrak{p}= r(\mathfrak{q})$, then $\mathfrak{q}$ is said to be $\mathfrak{p}$-primary.
+
+\begin{rem}
+Let $\mathfrak{q}$ be $\mathfrak{p}$-primary. This means if $ab\in\mathfrak{q}$, then either $a\in \mathfrak{p}$ or $b\in \mathfrak{q}$.
+\end{rem}
+
+\begin{lem}\label{minimal}
+If $\mathfrak{q}_1,\ldots,\mathfrak{q}_n$ are $\mathfrak{p}$-primary ideals, then $\mathfrak{q}=\bigcap_{i=1}^n \mathfrak{q}_i$ is a $\mathfrak{p}$-primary ideal.
+\end{lem}
+
+\begin{proof}
+$r(\mathfrak{q}) = r\bigl(\bigcap_{i=1}^n \mathfrak{q}_i\bigl) = \bigcap_{i=1}^n r(\mathfrak{q}_i) = \mathfrak{p}$. Let $xy\in\mathfrak{q},y\notin\mathfrak{q}$. Then for some $i$
+we have $xy\in \mathfrak{q}_i$ and $y\notin \mathfrak{q}_i$ hence $x\in \mathfrak{p}$, since $\mathfrak{q}_i$ is primary.
+\end{proof}
+Let $R$ be a ring and $I$ an ideal of $R$. We say that $I$ is \emph{irreducible} if for any two ideals $J$, $K$ of $R$ such that $I = J\cap K$ we have either $I = J$ or $J = K$.
+\begin{prop}\label{prop}
+(a) A prime ideal is irreducible. (b) An irreducible ideal in a Noetherian ring is primary.
+\end{prop}
+\begin{lem}
+Let $R$ be ring, let $\mathfrak{q}$ be a $\mathfrak{p}$-primary ideal, and let $x\in R$.\\
+(a) If $x\in \mathfrak{q}$ then $(\mathfrak{q} : (x)) = R$.\\
+(b) If $x\notin \mathfrak{q}$ then $(\mathfrak{q} : (x))$ is $\mathfrak{p}$-primary.\\
+(c) If $x\notin \mathfrak{p}$ then $(\mathfrak{q} : (x)) = \mathfrak{q}$.
+\end{lem}
+\begin{proof}
+(a) If $x\in \mathfrak{q}$ then $1\cdot(x) = (x)\subset \mathfrak{q}$ so $1\in (\mathfrak{q} : (x))$.\\
+(b) If $y\in(\mathfrak{q} : (x))$, then $xy\in \mathfrak{q}$. By assumption $x\notin \mathfrak{q}$, so $y^n\in \mathfrak{q}$ for some $n$ and thus $y\in r(\mathfrak{q}) = \mathfrak{p}$. So $\mathfrak{q} \subseteq(\mathfrak{q} : (x)) \subseteq \mathfrak{p}$; taking radicals we get $r((\mathfrak{q} : (x))) = \mathfrak{p}$. Moreover, if $yz\in (\mathfrak{q} : (x))$ with $y\notin r(\mathfrak{q} : (x)) = \mathfrak{p}$, then $xyz = y(xz)\in \mathfrak{q}$, so $xz\in \mathfrak{q}$, thus $z\in (\mathfrak{q} : (x))$. We get that $(\mathfrak{q} : (x))$ is primary.\\
+(c) In any case $\mathfrak{q} \subseteq (\mathfrak{q} : (x))$. If $x\notin \mathfrak{p} = r(\mathfrak{q})$ and $y\in (\mathfrak{q} : (x))$, then $xy\in \mathfrak{q}$; since no power of $x$ is in $\mathfrak{q}$, we must have $y\in \mathfrak{q}$.
+\end{proof}
+%\begin{lem}[Prime avoidance II]
+%Let $R$ be a ring and $\mathfrak{p}$ be a prime ideal of $R$. Let $\mathfrak{a}_1,\ldots,\mathfrak{a}_n$ be ideals of %$R$ such that $\bigcap_i \mathfrak{a}_i\subseteq \mathfrak{p}$. Then $\mathfrak{a}_j\subseteq \mathfrak{p}$ for some %$j$. If $\bigcap_i \mathfrak{a}_i=\mathfrak{p}$, then $\mathfrak{p}=\mathfrak{a}_j$ for some $j$.
+%\end{lem}
+\section{Main Topic}
+
+\subsection{Primary Decomposition of Ideals}
+
+
+\begin{defn}[Primary Decomposition]
+A primary decomposition of an ideal $\mathfrak{a}$ in $R$ is an expression of $\mathfrak{a}$ as a finite intersection of primary ideals, say
+\begin{align}
+\mathfrak{a}=\bigcap_{i=1}^{n}\mathfrak{q}_i.
+\end{align}
+where each $\mathfrak{q}_i$ is primary ideal.
+\end{defn}
+In general such a primary decomposition need not exist. We shall say that $\mathfrak{a}$ is \textbf{decomposable} if it has a primary decomposition [Atiyah].
+
+\medskip
+
+We say the above primary decomposition is minimal(irredundant) if\\
+(i) The prime ideals $r(\mathfrak{q}_i)$ are distinct,\\
+(ii) No $\mathfrak{q}_i$ can be omitted i.e. $\bigcap_{j\neq i} \mathfrak{q}_j\nsubseteq \mathfrak{q}_i$ ($1\le i\le n$).
+\medskip
+
+By lemma (\ref{minimal}) we can achieve (i) and then we can omit any superfluous terms to achieve (ii); thus any primary decomposition can be reduced to a minimal one.
+
+\begin{defn}
+Associated prime ideal of $\mathfrak{a}$ can be written as $r(\mathfrak{a}:x)$ for some $x\in R$.
+The set of such prime ideals of $\mathfrak{a}$ is called associated prime ideals of $\mathfrak{a}$ and denoted by $\text{Ass}(\mathfrak{a})$.
+%If $\mathfrak{a}=\bigcap_{i=1}^n\mathfrak{q}_i$ is an irredundant primary decomposition, then the ideals $\mathfrak{p}_i=r(\mathfrak{q}_i)$ are the associated primes of $\mathfrak{a}$. This set of primes is denoted by $\text{Ass}(\mathfrak{a})$.
+\end{defn}
+\begin{exmp}
+Here are some examples of primary decomposition
+\begin{enumerate}
+  \item $\langle 12\rangle=\langle 4\rangle\cap\langle 3\rangle$ in $R=\Bbb Z$. Here $\mathfrak{q}_1=\langle 4\rangle=\mathfrak{p}_1^2$, $\mathfrak{p}_1=\langle 2\rangle$ and $\mathfrak{q}_2=\mathfrak{p}_2=\langle 3\rangle$.
+  \item $\langle x^2,y \rangle=\langle x\rangle\cap\langle x,y\rangle^2$ in $R=k[x,y]$ where $k$ is a field. Here $\mathfrak{q}_1=\langle x\rangle=\mathfrak{p}_1$ and $\mathfrak{q}_2=\mathfrak{p}_2^2$ with $\mathfrak{p}_2=\langle x,y\rangle$.
+  \item  For $I = \langle xy, xz, yz\rangle\subset k[x, y, z]$ there is a primary decomposition $I = \langle x, y\rangle\cap\langle x, z\rangle\cap\langle y, z\rangle$ and $\text{Ass}(I) = \{\langle x, y\rangle, \langle x, z\rangle, \langle y, z\rangle\}$.
+  \item Consider $\mathfrak{a}=\langle x^3,x^2y,xy^2z\rangle$
+  \begin{align*}
+  \mathfrak{a}&=\langle x^3,x^2,x\rangle\cap\langle x^3,x^2,y^2\rangle\cap\langle x^3,x^2,z\rangle\cap\langle x^3,y,x \rangle\cap\langle x^3,y,y^2\rangle\cap\langle x^3,y,z\rangle\\
+  &=\langle x\rangle\cap\langle x^2,y^2\rangle\cap\langle x^2,z\rangle\cap\langle y,x \rangle\cap\langle x^3,y\rangle\cap\langle x^3,y,z\rangle
+  \end{align*}
+  We have $\langle x^3,y\rangle\subset\langle x^3,y,z\rangle$ and $\langle x^2,y^2\rangle\subset \langle x,y \rangle$, so we can delete $\langle x^3,y,z\rangle$ and $\langle x,y \rangle$. We have $\langle x^2,y^2\rangle\cap\langle x^3,y\rangle=\langle x^3,x^2y,x^3y^2,y^2\rangle=\langle x^3,x^2y,y^2\rangle$. Thus $\mathfrak{a}=\langle x\rangle\cap\langle x^3,x^2y,y^2\rangle\cap\langle x^2,z\rangle$ is a primary decomposition of $\mathfrak{a}$. The associated prime ideals are $\langle x\rangle,\langle x,y\rangle$ and $\langle x,z\rangle$
+\end{enumerate}
+\end{exmp}
+
+\begin{thm}
+Let $\mathfrak{a}$ be a decomposable ideal and let $\mathfrak{a} = \bigcap_{i=1}^n \mathfrak{q}_i$ be a minimal primary decomposition of $\mathfrak{a}$. Let $\mathfrak{p}_i= r(\mathfrak{q}_i)$, $1\leq i\leq n)$. Then the $\mathfrak{p}_i$ are precisely the prime ideals which occur in the set of ideals $r(\mathfrak{a}:x)$, $x\in A$, and hence are independent of the particular decomposition of $\mathfrak{a}$.
+\end{thm}
+
+\begin{proof}
+Since the decomposition is minimal we can find $x\in \bigcap_{j\neq i}\mathfrak{q}_j$ with $x\notin \mathfrak{q}_i$ and we ave
+\begin{align*}
+r(\mathfrak{a}:x)&=r(\mathfrak{q}_1:x\cap\cdots\cap \mathfrak{q}_n:x)
+   =r(\mathfrak{q}_1:x)\cap\cdots\cap r(\mathfrak{q}_n:x)
+   =R\cap\cdots\cap\mathfrak{p}_i\cap\cdots\cap R=\mathfrak{p}_i
+\end{align*}
+Hence $\mathfrak{p}_i\in \mbox{Ass}(\mathfrak{a})$
+
+\medskip
+
+Let $\mathfrak{p}\in\mbox{Ass}(\mathfrak{a})$, thus, $r(\mathfrak{a}:x)=\mathfrak{p}$ for some $x\in R$.
+Then
+\[
+\mathfrak{p}=r(\mathfrak{a}:x)=r(\mathfrak{q}_1:x)\cap\cdots\cap r(\mathfrak{q}_n:x)\]
+Since $\mathfrak{p}$ is prime it contains $r(\mathfrak{q}_i:x)$ for some $i$. Also $\mathfrak{p}\subset r(\mathfrak{q}_i:x)$.
+Thus, $\mathfrak{p}=r(\mathfrak{q}_i:x)$.
+\end{proof}
+
+\begin{thm}[Noether]
+Any proper ideal in a Noetherian ring admits a primary decomposition.
+\end{thm}
+\begin{proof}
+Let $I$ be a proper ideal in the Noetherian ring $R$. We claim $I$ is a finite intersection of irreducible ideals; by part (b) of Proposition \ref{prop} this gives the desired result. To see this: suppose that the set of proper ideals which cannot be written as a finite intersection of irreducible ideals is nonempty, and choose a maximal element $I$. Then $I$ is reducible, so we may write $I = J\cap K$ where each of $J$ and $K$ is strictly larger than $I$. But being strictly larger than $I$ each of $J$ and $K$ can be written as a finite intersection of irreducible ideals, and hence so can $I$, which is a contradiction.
+\end{proof}
+
+\begin{thebibliography}{9}
+
+\bibitem{May}
+[David Cox, John Little \& Donal O'Shea] ~
+ Ideals, Varieties, and Algorithms (1997).
+
+\bibitem{amsshort}
+[M. F. Atiyah \& I. G. MacDonald]  ~
+Introduction to Commutative Algebra (1969).
+
+\bibitem{Jun}
+[Ralf Fr\"{o}berg]~
+\newblock An Introduction to Gr\"{o}bner Bases (1997).
+\end{thebibliography}
+\end{document}
